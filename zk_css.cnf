@@ -1,0 +1,35 @@
+[test1]
+host = 192.168.1.118
+port = 3306
+db_name = test
+user = root
+password = 123456
+
+
+[metadata]
+host = 192.168.1.118
+port = 3306
+db_name = db_metadata
+user = root
+password = 123456
+
+
+
+[user]
+host = 192.168.1.118
+port = 3306
+db_name = db_user
+user = root
+password = 123456
+
+
+# 日志路径
+[log]
+logpath = /opt/code/my_code/zk_css/cgss.log
+
+
+# 注意这里要写绝对路径
+# 是目录的总路径
+[filepath]
+upload_path = /opt/code/my_code/zk_css/file/up
+download_path = /opt/code/my_code/zk_css/file/down
