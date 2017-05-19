@@ -6,6 +6,13 @@ user = root
 password = 123456
 
 
+[data]
+host = 192.168.1.118
+port = 3306
+db_name = db_data_20170524164100
+user = root
+password = 123456
+
 [metadata]
 host = 192.168.1.118
 port = 3306

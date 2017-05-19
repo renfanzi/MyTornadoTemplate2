@@ -7,4 +7,4 @@ PyMySQL==0.7.9
 
 tornado==4.4.1
 
-savReaderWriter == 3.4.2
+savReaderWriter==3.4.2

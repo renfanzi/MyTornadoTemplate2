@@ -34,6 +34,6 @@ application = tornado.web.Application(router, **settings)
 
 if __name__ == "__main__":
     server = HTTPServer(application, max_buffer_size=504857600)
-    server.bind(options.port)
+    server.bind(options.port, address="0.0.0.0")
     server.start(5)  # Forks multiple sub-process
     tornado.ioloop.IOLoop.current().start()

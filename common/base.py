@@ -11,10 +11,12 @@ import pymysql
 from common.log.loger import Logger
 import datetime, time, uuid, re
 
+
 class Config(object):
     """
     # Config().get_content("user_information")
     """
+
     def __init__(self, config_filename="zk_css.cnf"):
         file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), config_filename)
         self.cf = configparser.ConfigParser()
@@ -86,9 +88,10 @@ class MyPymysql(base_pymysql):
         Config.__init__(self, config_filename="zk_css.cnf")
 
     """
+
     def __init__(self, conf_name):
         self.conf = Config().get_content(conf_name)
-        super(My_Pymysql, self).__init__(**self.conf)
+        super(MyPymysql, self).__init__(**self.conf)
         self.connect()
 
     def idu_sql(self, sql):
@@ -117,13 +120,14 @@ class MyPymysql(base_pymysql):
         self.conn = None
         self.cursor = None
 
-def result(status, value):
+
+def result(status, value=None):
     """
     staatus:
     2000, 什么都ok
     4000, 客户上传的文件格式不正确
     4001， 客户上传的文件列超过5400
-    4002， 暂时梅想到
+    4002， 值传递错误
     5000， 服务器错误
     5001， 数据表已经存在
     5002,  sql语句错误
@@ -135,7 +139,9 @@ def result(status, value):
     elif status == 4001:
         message = u"客户上传的文件列超过5400"
     elif status == 4002:
-        message = u"暂时梅想到"
+        message = u"值传递错误"
+    elif status == 4003:
+        message = u"文件数据不对"
     elif status == 5000:
         message = u"服务器错误"
     elif status == 5001:
@@ -189,14 +195,14 @@ class my_datetime():
         elif isinstance(dtdt, float):
             return dtdt
 
-        # elif isinstance(dtdt, unicode):
-        #     if dtdt.split(" ")[1:]:
-        #         a_datetime = datetime.datetime.strptime(dtdt, "%Y-%m-%d %H:%M:%S")
-        #         timestamp = time.mktime(a_datetime.timetuple())
-        #     else:
-        #         a_datetime = datetime.datetime.strptime(dtdt, "%Y-%m-%d")
-        #         timestamp = time.mktime(a_datetime.timetuple())
-        #     return timestamp
+            # elif isinstance(dtdt, unicode):
+            #     if dtdt.split(" ")[1:]:
+            #         a_datetime = datetime.datetime.strptime(dtdt, "%Y-%m-%d %H:%M:%S")
+            #         timestamp = time.mktime(a_datetime.timetuple())
+            #     else:
+            #         a_datetime = datetime.datetime.strptime(dtdt, "%Y-%m-%d")
+            #         timestamp = time.mktime(a_datetime.timetuple())
+            #     return timestamp
 
     def become_datetime(self, dtdt):
         # 将时间类型转换成datetime类型
@@ -215,12 +221,12 @@ class my_datetime():
             a_datetime = datetime.datetime.fromtimestamp(dtdt)
             return a_datetime
 
-        # elif isinstance(dtdt, unicode):
-        #     if dtdt.split(" ")[1:]:
-        #         a_datetime = datetime.datetime.strptime(dtdt, "%Y-%m-%d %H:%M:%S")
-        #     else:
-        #         a_datetime = datetime.datetime.strptime(dtdt, "%Y-%m-%d")
-        #     return a_datetime
+            # elif isinstance(dtdt, unicode):
+            #     if dtdt.split(" ")[1:]:
+            #         a_datetime = datetime.datetime.strptime(dtdt, "%Y-%m-%d %H:%M:%S")
+            #     else:
+            #         a_datetime = datetime.datetime.strptime(dtdt, "%Y-%m-%d")
+            #     return a_datetime
 
     def become_str(self, dtdt):
         # 把时间类型转换成字符串
@@ -236,20 +242,18 @@ class my_datetime():
             a_datetime = a_datetime_local.strftime("%Y-%m-%d %H:%M:%S")
             return a_datetime
 
-        # elif isinstance(dtdt, unicode):
-        #     # 区别：一个是strp， 一个是strf
-        #     if dtdt.split(" ")[1:]:
-        #         a_datetime = datetime.datetime.strptime(dtdt, "%Y-%m-%d %H:%M:%S")
-        #         a_datetime = a_datetime.strftime("%Y-%m-%d %H:%M:%S")
-        #     else:
-        #         a_datetime = datetime.datetime.strptime(dtdt, "%Y-%m-%d")
-        #         a_datetime = a_datetime.strftime("%Y-%m-%d")
-        #     return a_datetime
+            # elif isinstance(dtdt, unicode):
+            #     # 区别：一个是strp， 一个是strf
+            #     if dtdt.split(" ")[1:]:
+            #         a_datetime = datetime.datetime.strptime(dtdt, "%Y-%m-%d %H:%M:%S")
+            #         a_datetime = a_datetime.strftime("%Y-%m-%d %H:%M:%S")
+            #     else:
+            #         a_datetime = datetime.datetime.strptime(dtdt, "%Y-%m-%d")
+            #         a_datetime = a_datetime.strftime("%Y-%m-%d")
+            #     return a_datetime
 
 
 def MyGuid():
-
-
     date = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
 
     us = ("%.7f" % time.time())[-7:]
@@ -260,9 +264,9 @@ def MyGuid():
 
     return ret
 
+
 logpath = Config().get_content("log")["logpath"]
 if os.path.exists(logpath):
     my_log = Logger(filename=logpath)
 else:
     my_log = Logger()
-
