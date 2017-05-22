@@ -142,6 +142,8 @@ def result(status, value=None):
         message = u"值传递错误"
     elif status == 4003:
         message = u"文件数据不对"
+    elif status == 4004:
+        message = u"已经存在"
     elif status == 5000:
         message = u"服务器错误"
     elif status == 5001:

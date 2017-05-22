@@ -172,7 +172,7 @@ def CreateProjectCore(self):
 def CreateQuestCore(self):
     try:
         CreateData = self.get_arguments("CreateData")
-        print(CreateData)
+        # print(CreateData)
         if (len(CreateData) == 1):
             CreateData = json.loads(CreateData[0], encoding='utf-8')
             if (len(CreateData) == 17):
@@ -270,7 +270,7 @@ def CreateQuestCore(self):
     except Exception as e:
         my_log.error(e)
         return 4002
-    return 2000
+    return 2000, QuesID
 
 
 def UploadSpssCore(self):
@@ -280,73 +280,73 @@ def UploadSpssCore(self):
     QuesID = self.get_arguments("QuesID")[0]
     # print(UserID)
 
-    if not (UserID and ProjectID and QuesID):
+    if UserID and ProjectID and QuesID:
 
-        return 4000
-    if len(file_metas) == 1:
-        FileTile = None
-        FileDescript = None
-        FileType = ".sav"
-        FilePublic = 1
-        AuthorUserIDs = ""
-        UploadUserID = UserID
-        UploadTime = EditTime = (datetime.datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
-        FileStatus = 1
-        DataTableID = ""
-
-        print(file_metas)
-
-        for meta in file_metas:
-            md5_value = hashlib.md5()
-            file_name = meta['filename']
-            if file_name.split(".")[-1] != "sav":
-                # self.write(json.dumps(result(4000, value=None), ensure_ascii=False))
-
-                return 4000
-                break
-            # 这块对路径的修改和文件目录的创建
-            if (Config().get_content('filepath')['upload_path']):
-                file_path = Config().get_content('filepath')['upload_path']
-            else:
-                file_path = os.makedirs(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'file'))
-
-            # 用户目录
-            user_path = os.path.join(file_path, str(UserID))
-            # 项目目录
-            user_proje = os.path.join(user_path, ProjectID)
-            # 判断用户目录,
-            if not os.path.exists(user_path):
-                os.makedirs(user_path)
-            # 其次是项目
-            if not os.path.exists(user_proje):
-                os.makedirs(user_proje)
-            # 问卷目录
-            user_ques = os.path.join(user_proje, QuesID)
-            if not os.path.exists(user_ques):
-                os.makedirs(user_ques)
-            # 重复的话备份一次
-            if os.path.exists(os.path.join(user_ques, file_name)):
-                os.renames(os.path.join(user_ques, file_name), os.path.join(user_ques, file_name + ".bak"))
-
-            FilePath = os.path.join(user_ques, file_name)
-
-            # file_path = os.path.join("file", file_name)
-            # write input file --file
-            with open(FilePath, 'wb') as up:
-                up.write(meta['body'])
-            md5_value.update(meta['body'])
-            FileMD5 = md5_value.hexdigest()
-
-            QuestFile = {"QuesID": QuesID, "FileTile": FileTile, "FileDescript": FileDescript, "FileType": FileType,
-                         "FilePath": FilePath, "FilePublic": FilePublic, "AuthorUserIDs": AuthorUserIDs,
-                         "UploadUserID": UploadUserID,
-                         "UploadTime": UploadTime, "FileMD5": FileMD5, "FileStatus": FileStatus, "EditTime": EditTime}
-
-            CreateQuestFile(QuestFile)
-            upload_spss().main(FilePath, file_name, UserID, QuesID)
+        if len(file_metas) == 1:
+            FileTile = None
+            FileDescript = None
+            FileType = ".sav"
+            FilePublic = 1
+            AuthorUserIDs = ""
+            UploadUserID = UserID
+            UploadTime = EditTime = (datetime.datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
+            FileStatus = 1
+            DataTableID = ""
 
 
-        return 2000
+            for meta in file_metas:
+                md5_value = hashlib.md5()
+                file_name = meta['filename']
+                if file_name.split(".")[-1] != "sav":
+                    # self.write(json.dumps(result(4000, value=None), ensure_ascii=False))
+
+                    return 4000
+                    break
+                # 这块对路径的修改和文件目录的创建
+                if (Config().get_content('filepath')['upload_path']):
+                    file_path = Config().get_content('filepath')['upload_path']
+                else:
+                    file_path = os.makedirs(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'file'))
+
+                # 用户目录
+                user_path = os.path.join(file_path, str(UserID))
+                # 项目目录
+                user_proje = os.path.join(user_path, ProjectID)
+                # 判断用户目录,
+                if not os.path.exists(user_path):
+                    os.makedirs(user_path)
+                # 其次是项目
+                if not os.path.exists(user_proje):
+                    os.makedirs(user_proje)
+                # 问卷目录
+                user_ques = os.path.join(user_proje, QuesID)
+                if not os.path.exists(user_ques):
+                    os.makedirs(user_ques)
+                # 重复的话备份一次
+                if os.path.exists(os.path.join(user_ques, file_name)):
+                    os.renames(os.path.join(user_ques, file_name), os.path.join(user_ques, file_name + ".bak"))
+
+                FilePath = os.path.join(user_ques, file_name)
+
+                # file_path = os.path.join("file", file_name)
+                # write input file --file
+                with open(FilePath, 'wb') as up:
+                    up.write(meta['body'])
+                md5_value.update(meta['body'])
+                FileMD5 = md5_value.hexdigest()
+
+                QuestFile = {"QuesID": QuesID, "FileTile": FileTile, "FileDescript": FileDescript, "FileType": FileType,
+                             "FilePath": FilePath, "FilePublic": FilePublic, "AuthorUserIDs": AuthorUserIDs,
+                             "UploadUserID": UploadUserID,
+                             "UploadTime": UploadTime, "FileMD5": FileMD5, "FileStatus": FileStatus, "EditTime": EditTime}
+
+                CreateQuestFile(QuestFile)
+                upload_spss().main(FilePath, file_name, UserID, QuesID)
+
+
+            return 2000
+        else:
+            return 4003
     else:
-        return 4003
 
+        return 4002

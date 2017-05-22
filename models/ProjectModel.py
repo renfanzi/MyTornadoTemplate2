@@ -118,7 +118,7 @@ def SelectProFile(project_id):
 
 
 def SelectQuestInfor(ProjectID):
-    sql = "select `QuesID`, `ProjectID`, `QuesTitle`, `QuesLEads` from `meta_questionnaire` where ProjectID=%s AND QuesStatus=1 " % ProjectID
+    sql = "select `QuesID`, `ProjectID`, `QuesTitle`, `QuesLEads` from `meta_questionnaire` where ProjectID=%s;" % ProjectID
     ret = MyPymysql('metadata')
     res = ret.selectall_sql(sql)
     ret.close()
@@ -157,7 +157,9 @@ def CreateQuestInfo(data):
     # QuestInfoData = {"QuesID": QuesID, "InfoTile": InfoTile, "InfoContent": InfoContent, "EditUserID": EditUserID,
     #                  "EditTime": EditTime, "CreateTime": CreateTime}
     sql = "insert into `meta_questionnaire_info` SET QuesID={}, InfoTile='{}', InfoContent='{}', EditUserID={}, CreateTime='{}';".format(
-        data["QuesID"], data["InfoTile"], data["InfoContent"], data["EditUserID"], data["CreateTime"])
+        data["QuesID"], data["InfoTile"],
+        data["InfoContent"], data["EditUserID"],
+        data["CreateTime"])
 
     ret = MyPymysql('metadata')
     ret.idu_sql(sql)
@@ -201,26 +203,57 @@ def SelectAllVable(QuesID):
         DataTableIDSql = "select DataTableID from `meta_data_table` WHERE QuesID='{}';".format(QuesID)
 
         DataTableID = ret.selectall_sql(DataTableIDSql)
-        print(DataTableID)
+        # print(DataTableID)
         if DataTableID:
             DataTableID = DataTableID[0]["DataTableID"]
-        sql = "select VariableID, DataTableID, OrderNum, VarName, VarTopic, VarLabel from `meta_variable` WHERE DataTableID='{}';".format(DataTableID)
-        print(sql)
+        sql = "select VariableID, DataTableID, OrderNum, VarName, VarTopic, VarLabel, VarValues from `meta_variable` WHERE DataTableID='{}';".format(DataTableID)
+        # print(sql)
         alldata = ret.selectall_sql(sql)
-        print(alldata)
+        # print(alldata)
         ret.close()
     except Exception as e:
         my_log.error(e)
         alldata = 5002
     return alldata
 
-def SelectSbuVable(data):
 
-    sql = "select VariableID, DataTableID, OrderNum, NarName from `meta_variable` WHERE DataTableID='{}';".format(data)
+
+# -----------------------------
+# def SelectSbuVable(data):
+#
+#     sql = "select VariableID, DataTableID, OrderNum, NarName from `meta_variable` WHERE DataTableID='{}';".format(data)
+#     ret = MyPymysql('metadata')
+#     alldata = ret.selectall_sql(sql)
+#     ret.close()
+#     return alldata
+
+# 查看表的具体信息，表id， 表名等
+def SelectDataTablesInfo(QuesID):
     ret = MyPymysql('metadata')
-    alldata = ret.selectall_sql(sql)
+    DataTableIDSql = "select * from `meta_data_table` WHERE QuesID='{}';".format(QuesID)
+    table_data= ret.selectall_sql(DataTableIDSql)
     ret.close()
-    return alldata
+    return table_data
+
+# 某个变量的具体信息
+def SelectVarNameInfo(DataTableID, VarName):
+    ret = MyPymysql('metadata')
+    SubVarNameSql = "Select * from `meta_variable` WHERE `DataTableID`='{}' AND `VarName`='{}';".format(DataTableID, VarName)
+    SubVarNameData= ret.selectone_sql(SubVarNameSql)
+    ret.close()
+    return SubVarNameData
+
+
+from common.util.my_sqlalchemy import sqlalchemy_engine
+import pandas as pd
+
+# 某个变量的具体数据
+def SelectVarNameData(varname, tablename):
+
+    sql = "select `{}` from `{}`;".format(varname, tablename)
+    df= pd.read_sql(sql, sqlalchemy_engine)
+
+    return df
 
 
 
@@ -232,5 +265,12 @@ if __name__ == '__main__':
     # ret = re.search(r"[\/|\\].*[\/|\\]", SelectProFile(12)[0]["FilePath"]).group()
     # print(ret)
 
-    ret = SelectSbuProInfor('2017051820030259328348437454')
+    # ret = SelectVarNameInfo('2017052103364268837699868512', 'Q1R4')
+    ret = SelectDataTablesInfo('2017052103364250964166775131')
+
     print(ret)
+
+    # tablename = "db2017052103364268837699868512_1"
+    # varname = "Q1R4"
+    # ret = SelectVarNameInfo(varname, tablename)
+    # print(ret)

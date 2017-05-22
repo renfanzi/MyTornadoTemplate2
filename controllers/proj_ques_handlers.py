@@ -13,7 +13,8 @@ from common.base import Config
 from common.base import my_log
 from concurrent.futures import ThreadPoolExecutor
 from tornado.concurrent import run_on_executor
-from models.ProjectModel import SelectProInfor, SelectProInfor, SelectSbuProInfor, SelectQuestInfor, SelectSubQues, SelectAllVable
+from models.ProjectModel import SelectProInfor, SelectProInfor, SelectSbuProInfor, SelectQuestInfor, SelectSubQues
+from models.ProjectModel import  SelectAllVable, SelectDataTablesInfo, SelectVarNameInfo, SelectVarNameData
 from core.ProjectDetailed import CreateProjectCore, CreateQuestCore, UploadSpssCore
 import decimal
 
@@ -146,7 +147,7 @@ class CatQuest(BaseRequestHandler):
         except Exception as e:
             my_log.error(e)
             status = 4002
-            res=None
+            res=""
 
         self.write(json.dumps(result(status=status, value={"data": res})))
         self.finish()
@@ -171,18 +172,21 @@ class CatSubQuest(BaseRequestHandler):
 
         try:
             QuesID = self.get_arguments("QuesID")
-            res = SelectSubQues(QuesID[0])
-            allvalue = SelectAllVable(QuesID[0])
-            if allvalue == 5002:
-                allvalue=[]
+            if QuesID:
+                res = SelectSubQues(QuesID[0])
+                allvalue = SelectAllVable(QuesID[0])
+                if allvalue == 5002:
+                    allvalue=[]
 
-            for i in res:
-                for k, va in i.items():
-                    if isinstance(va, decimal.Decimal):
-                        i[k] = str(va)
-                    if isinstance(va, object):
-                        i[k] = str(va)
-            status = 2000
+                for i in res:
+                    for k, va in i.items():
+                        if isinstance(va, decimal.Decimal):
+                            i[k] = str(va)
+                        if isinstance(va, object):
+                            i[k] = str(va)
+                status = 2000
+            else:
+                status = 4002
         except Exception as e:
             my_log.error(e)
             status = 4002
@@ -210,13 +214,16 @@ class CreateQuest(BaseRequestHandler):
 
         try:
             res = CreateQuestCore(self)
-
+            if res[0] == 2000:
+                quesid = res[1]
+            else:
+                quesid = ""
         except Exception as e:
             my_log.error(e)
-
+            quesid = ""
             res=4002
 
-        self.write(json.dumps(result(status=res)))
+        self.write(json.dumps(result(status=res, value=quesid)))
         self.finish()
 
 
@@ -246,7 +253,7 @@ class UploadSpss(BaseRequestHandler):
         self.finish()
 
 
-# 查看所有标签的值
+# 查看标签的值info
 class CatSubVable(BaseRequestHandler):
     executor = ThreadPoolExecutor(2)
 
@@ -264,9 +271,96 @@ class CatSubVable(BaseRequestHandler):
         # 查看项目通过userid
 
         try:
-            DataTableID = self.get_arguments("DataTableID")[0]
-            res = SelectSbuVable(DataTableID)
-            status = 2000
+            QuesID = self.get_arguments("QuesID")[0]
+            VarName = self.get_arguments("VarName")[0]
+            if QuesID and ValueError:
+                meta_data_tables = SelectDataTablesInfo(QuesID)
+                if meta_data_tables:
+                    if len(meta_data_tables) == 1:
+                        DataTableID = meta_data_tables[0]["DataTableID"]
+                        DataTableName = meta_data_tables[0]["DataTableName"]
+                        sub_varname_info = SelectVarNameInfo(DataTableID, VarName)
+                        VarLabel = sub_varname_info["VarLabel"]
+                        VarValues = json.loads(sub_varname_info["VarValues"])
+
+
+                        df = SelectVarNameData(VarName, DataTableName)
+                        effective_total = len(df.dropna())
+                        all_total = len(df)
+                        if isinstance(VarValues, dict):
+                            var_dict = (df.groupby(VarName).size()).to_json()
+
+                        else:
+                            var_dict = ""
+                        status = 2000
+                        res = {"VarName": VarName, "VarLabel": VarLabel, "VarValues": VarValues, "effective_total": effective_total, "all_total": all_total, "data_summary": var_dict}
+
+                else:
+                    status = 4002
+                    res = ""
+            else:
+                status = 4002
+                res = ""
+        except Exception as e:
+            my_log.error(e)
+            res = ""
+            status = 5000
+
+        self.write(json.dumps(result(status=status, value={"data":res})))
+        self.finish()
+
+
+class MeanValues(BaseRequestHandler):
+    executor = ThreadPoolExecutor(2)
+
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
+        self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+
+    def get(self):
+        self.write("welcome ...11")
+
+    @tornado.gen.coroutine
+    def post(self, *args, **kwargs):
+        # 判断是否登录
+        # 查看项目通过userid
+
+        try:
+            QuesID = self.get_arguments("QuesID")[0]
+            VarName = self.get_arguments("VarName")[0]
+            if QuesID and ValueError:
+                # 表的信息
+                meta_data_tables = SelectDataTablesInfo(QuesID)
+                if meta_data_tables:
+                    if len(meta_data_tables) == 1:
+                        DataTableID = meta_data_tables[0]["DataTableID"]
+                        DataTableName = meta_data_tables[0]["DataTableName"]
+                        # 变量的信息
+                        sub_varname_info = SelectVarNameInfo(DataTableID, VarName)
+                        VarValues = sub_varname_info["VarValues"]
+                        # 变量的数据
+                        df = SelectVarNameData(VarName, DataTableName)
+                        SendDict = {}
+                        SendDict["columnID"] = VarName
+                        SendDict["countN"] = len(df.dropna())
+                        SendDict["maxValue"] = str(dict(df.max())[VarName])
+                        SendDict["minValue"] = str(dict(df.min())[VarName])
+                        SendDict["average"] = str(dict(df.mean())[VarName])
+                        SendDict["stdev"] = str(dict(df.std())[VarName])
+                        SendDict["sum"] = str(dict(df.sum())[VarName])
+                        SendDict["midValue"] = str(dict(df.median())[VarName])
+
+                        # print(SendDict)
+                        status = 2000
+                        res = SendDict
+
+                else:
+                    status = 4002
+                    res = ""
+            else:
+                status = 4002
+                res = ""
         except Exception as e:
             my_log.error(e)
             res = ""

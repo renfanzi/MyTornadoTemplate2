@@ -95,10 +95,17 @@ class writer_information_tables():
               "VarWidth={}, VarDecimals='{}', OriginFormats='{}', VarMeasure={}, VarValues='{}', VarMissing='{}', " \
               "VarTopic='{}', VarLabel='{}', OriginQuestion='{}', OtherLangLabel='{}', DataFrom={}, DeriveFrom='{}', " \
               "VarRole={}, VarVersion={}, ReviseFrom={}, ReviseTime='{}', ReviseUserID={}, VarNote='{}', VarStatus={};".format(
-            data["DataTableID"], data["OrderNum"], data["VarName"], data["VarType"], data["VarWidth"], data["VarDecimals"],
-            data["OriginFormats"], data["VarMeasure"], data["VarValues"], data["VarMissing"], data["VarTopic"],
-            data["VarLabel"], data["OriginQuestion"], data["OtherLangLabel"], data["DataFrom"], data["DeriveFrom"],
-            data["VarRole"], data["VarVersion"], data["ReviseFrom"], data["ReviseTime"], data["ReviseUserID"], data["VarNote"], data["VarStatus"])
+            data["DataTableID"], data["OrderNum"],
+            data["VarName"], data["VarType"],
+            data["VarWidth"], data["VarDecimals"],
+            data["OriginFormats"], data["VarMeasure"],
+            data["VarValues"], data["VarMissing"],
+            data["VarTopic"],data["VarLabel"],
+            data["OriginQuestion"], data["OtherLangLabel"],
+            data["DataFrom"], data["DeriveFrom"],
+            data["VarRole"], data["VarVersion"],
+            data["ReviseFrom"], data["ReviseTime"],
+            data["ReviseUserID"], data["VarNote"], data["VarStatus"])
         self.res.idu_sql(sql)
 
     def close(self):

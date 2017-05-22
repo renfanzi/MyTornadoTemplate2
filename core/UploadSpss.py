@@ -68,7 +68,6 @@ class upload_spss():
                 self.float_width.append(dec[1])
             else:
                 self.float_width.append(0)
-        print(self.float_width)
         return self.float_width
 
     def writer_data(self, filepath, filename, valuetypes, tablename):
@@ -118,23 +117,23 @@ class upload_spss():
 
     # def insert_sub_table(self, filename, varnames, valuetypes, width, float_width,varLabels, valueLabels, vartypes,project_id,dataset_id):
     def insert_sub_table(self, DataTableID, varnames, my_valuetypes, my_width, float_width, varLabels, valueLabels, my_vartypes):
+        # print(my_width)
         try:
             res = writer_information_tables()
-
             for i in range(len(varnames)):
                 data = {}
                 data["DataTableID"] = DataTableID
                 data["OrderNum"] = i
                 data["VarName"] = varnames[i]
                 data["VarType"] = my_valuetypes[i]
-                data["VarWidth"] = my_width[i]
+                if self.width[i]:
+                    data["VarWidth"] = self.width[i]
+                else:
+                    data["VarWidth"] = 20
                 data["VarDecimals"] = float_width[i]
-
                 data["OriginFormats"] = my_vartypes[i]
                 data["VarMeasure"] = 0
-
                 # data.append(varLabels[varnames[i]].replace('\u3000', ' '))  # 注意这里: 存之前: Ｆ1.0　请根据你的实际情况，  存之后:Ｆ4.0u3000请根据你的实际情况，在下列描述中，选择符合你的程度，并选择
-
                 if varnames[i] in valueLabels:
                     json_unicode_dict = json.dumps(valueLabels[varnames[i]], ensure_ascii=False)
                     data["VarValues"] = json_unicode_dict
@@ -187,9 +186,6 @@ class upload_spss():
                     pass
                 else:
                     my_vartypes[i] = my_vartypes[i] + ".0"
-
-
-
 
         # 创建表
         # 不允许超过1024列MySQL, 超过了分表
@@ -247,6 +243,7 @@ class upload_spss():
         # 信息表值创建一个
         # create_information_tables(filename)
         # 写入数据(标签等信息)
+        # self.insert_sub_table(DataTableID, varnames, my_valuetypes, my_width, float_width, varLabels, valueLabels,my_vartypes)
         try:
             # self.insert_sub_table(filename, varnames, my_valuetypes, my_width, float_width, varLabels, valueLabels,
             #                  my_vartypes,project_id, dataset_id)
@@ -254,10 +251,6 @@ class upload_spss():
         except Exception as e:
             my_log.error(e)
 
-            # if ret==2000 and ret1 == 2000:
-            #     return ret
-            # else:
-            #     return 5000
         return DataTableID
 
 

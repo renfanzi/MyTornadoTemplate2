@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 
 from controllers.proj_ques_handlers import CatProject, CreateProject, CatQuest, CreateQuest, UploadSpss, CatSubProject, CatSubQuest, CatSubVable
+from controllers.proj_ques_handlers import MeanValues
 
 urls = [
     # (r'/upload', Upload),
@@ -22,7 +23,9 @@ urls = [
     (r'/UploadSpss', UploadSpss),
     # questionnaire and variable details
 
-    # signle variable details
+    # 查看单个变量
     (r'/CatSubVable', CatSubVable),
+
+    (r'/v1/MeanValues', MeanValues)
 
 ]
