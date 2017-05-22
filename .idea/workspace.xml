@@ -2,17 +2,65 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="464ce303-7911-4bbe-a169-d03fb7f7ca3d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/util/my_sqlalchemy.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/2017051915503170818527525025/kkk.sav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/2017051915503170818527525025/log.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/2017051915503170818527525025/ttt.sav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/2017051915503170818527525025/ttt.sav.bak" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/2017051920433277955461067699/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/2017051920464331927378374333/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/2017051920484615913256620210/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/2017051920501039844876706454/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/2017051920512354994063933293/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/2017052003375295191347285386/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/2017052003382338463590082570/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/2017052021055919994141281151/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/inspect.bat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/null/ttt.sav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051915432391831237241164/null/ttt.sav.bak" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051917255659116910861717/2017051917264818602099644879/inspect.bat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051917255659116910861717/2017051918440762157015987957/WebStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051917255659116910861717/2017051918592523493349611047/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051917255659116910861717/2017051919003674028064067569/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051917255659116910861717/2017051919032381577281009534/WebStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051917255659116910861717/2017051919040516284371636900/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051917255659116910861717/2017051920282293187459709556/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051917255659116910861717/inspect.bat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051919310323616056687140/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051919335074470834114076/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051922484755728654285861/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051922493542877798915969/2017051922513120733988935980/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051922493542877798915969/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017051922493542877798915969/null/ttt.sav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052003403591651516316394/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052003431245784958239892/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052004085639994033894934/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052004121235101491437175/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052004121235101491437175/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052004133790013226404989/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052004182025114068097354/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052004345222658909068661/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052004350554220896927044/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052004351477961928265507/2017052006240280724745649447/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052004351477961928265507/PhpStorm.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052004351477961928265507/null/ttt.sav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101210368196203093407/2017052101221474089816276716/w3school.CHM" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101210368196203093407/2017052101332940101862215752/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101210368196203093407/null/1111.sav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101210368196203093407/null/1111.sav.bak" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101210368196203093407/vhosts.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101450463512972891874/2017052101504785076176969393/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101450463512972891874/2017052101504867738274177099/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101450463512972891874/2017052102024433349201773719/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101450463512972891874/2017052102061990207915481845/1111.sav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101450463512972891874/2017052102061990207915481845/1111.sav.bak" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101450463512972891874/2017052102061990207915481845/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101450463512972891874/2017052102484635712967927984/1111.sav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101450463512972891874/2017052102484635712967927984/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101450463512972891874/2017052102493783212528310085/Fireworks.exe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101450463512972891874/null/1111.sav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101450463512972891874/null/1111.sav.bak" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/file/up/2/2017052101450463512972891874/vhosts.conf" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/base.py" afterPath="$PROJECT_DIR$/common/base.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/proj_ques_handlers.py" afterPath="$PROJECT_DIR$/controllers/proj_ques_handlers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/ProjectDetailed.py" afterPath="$PROJECT_DIR$/core/ProjectDetailed.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/UploadSpss.py" afterPath="$PROJECT_DIR$/core/UploadSpss.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/ProjectModel.py" afterPath="$PROJECT_DIR$/models/ProjectModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/UploadSpssModel.py" afterPath="$PROJECT_DIR$/models/UploadSpssModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/urls.py" afterPath="$PROJECT_DIR$/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zk_css.log" afterPath="$PROJECT_DIR$/zk_css.log" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +73,7 @@
     <SUITE FILE_PATH="coverage/zk_css$test.coverage" NAME="test Coverage Results" MODIFIED="1494532831609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/zk_css$tes.coverage" NAME="tes Coverage Results" MODIFIED="1494537011443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/zk_css$CatProjectModel.coverage" NAME="CatProjectModel Coverage Results" MODIFIED="1495378183074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
-    <SUITE FILE_PATH="coverage/zk_css$app.coverage" NAME="app Coverage Results" MODIFIED="1495414043688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/zk_css$app.coverage" NAME="app Coverage Results" MODIFIED="1495414280284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -358,6 +406,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zk_css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zk_css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="file" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="up" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -743,7 +813,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1004" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.257754" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
